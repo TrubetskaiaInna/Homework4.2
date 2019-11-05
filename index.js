@@ -3,7 +3,7 @@ Array.prototype.myForEach = function (fun) {
     fun(this[i], i, this)
   }
 }
-someArr = [1, 0, 3, 1, -2, 10]
+const someArr = [1, 0, 3, 1, -2, 10]
 someArr.myForEach(function (element, index, arr) {
   console.log('element', element, 'index', index, arr)
 })
@@ -23,7 +23,7 @@ Array.prototype.mySort = function (fun) {
   if (fun) {
     for (let i = 0; i < this.length; i++) {
       for (let j = 0; j < this.length - 1; j++) {
-        if (fun(this[j], this[j + 1]) === 1) {
+        if (fun(this[j], this[j + 1]) > 0) {
           const element = this[j]
           this[j] = this[j + 1]
           this[j + 1] = element
@@ -58,3 +58,5 @@ function sortCondition (a, b) {
 
 someArr.mySort(sortCondition)
 console.log('sorted array by function', someArr)
+
+console.log([4, 8, 6, 3].mySort((a, b) => a - b))
